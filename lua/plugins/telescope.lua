@@ -68,6 +68,7 @@ return {
       vim.keymap.set("n", "<leader>fv", builtin.help_tags, {})
       vim.keymap.set("n", "<leader>ds", builtin.lsp_document_symbols, {})
       vim.keymap.set("n", "<leader>di", builtin.diagnostics, {})
+      vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
     end,
   },
 }
