@@ -46,3 +46,4 @@ end
 
 vim.api.nvim_create_user_command("Floaterminal", toggle_terminal, {})
 vim.keymap.set({ "n", "t" }, "<space>ftt", toggle_terminal)
+vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>", { nowait = true, silent = true })

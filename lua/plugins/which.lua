@@ -2,6 +2,8 @@ return {
   "folke/which-key.nvim",
   event = "VeryLazy",
   opts = {
+    timeout = true, -- ensure which-key timeout is active
+    timeoutlen = 300, -- reduce delay after <leader>
     preset = "helix",
     plugins = {
       marks = false,
