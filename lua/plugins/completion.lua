@@ -20,7 +20,6 @@ return {
         snippet = {
           -- REQUIRED - you must specify a snippet engine
           expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
             require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
           end,
         },
@@ -36,7 +35,7 @@ return {
           ["<CR>"] = cmp.mapping.confirm({ select = true }),
         }),
         sources = cmp.config.sources({
-          --{ name = 'nvim_lsp' },
+          { name = "nvim_lsp" },
           --{ name = 'vsnip' }, -- For vsnip users.
           { name = "luasnip" }, -- For luasnip users.
           -- { name = 'ultisnips' }, -- For ultisnips users.
