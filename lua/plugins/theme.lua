@@ -1,88 +1,76 @@
 return {
   {
-    "blazkowolf/gruber-darker.nvim",
-    opts = {
-      bold = false,
-    },
-  },
-  {
     "zenbones-theme/zenbones.nvim",
     dependencies = "rktjmp/lush.nvim",
     lazy = false,
-    priority = 1000,
-  },
-  { "ellisonleao/gruvbox.nvim" },
-  {
-    "rose-pine/neovim",
-    name = "rose-pine",
-  },
-  {
-    "tjdevries/colorbuddy.nvim",
-  },
-  {
-    "gmr458/cold.nvim",
+    priority = 0,
   },
   {
     "rose-pine/neovim",
     name = "rose-pine",
+    lazy = false,
+    priority = 0,
     config = function()
       require("rose-pine").setup({
-        disable_background = false, -- This enables the background
+        disable_background = false,
       })
-      vim.cmd("colorscheme rose-pine")
+      -- No vim.cmd("colorscheme rose-pine") here
     end,
   },
-  {
-    "vague2k/vague.nvim",
-    config = function()
-      require("vague").setup({
-        -- optional configuration here
-        --transparent = false,
-        style = {
-          -- "none" is the same thing as default. But "italic" and "bold" are also valid options
-          boolean = "none",
-          number = "none",
-          float = "none",
-          error = "none",
-          comments = "none",
-          conditionals = "none",
-          functions = "none",
-          headings = "bold",
-          operators = "none",
-          strings = "none",
-          variables = "none",
 
-          -- keywords
-          keywords = "none",
-          keyword_return = "none",
-          keywords_loop = "none",
-          keywords_label = "none",
-          keywords_exception = "none",
-
-          -- builtin
-          builtin_constants = "none",
-          builtin_functions = "none",
-          builtin_types = "none",
-          builtin_variables = "none",
-        },
-        colors = {
-          -- func = "#bc96b0",
-          -- keyword = "#787bab",
-          -- -- string = "#d4bd98",
-          -- string = "#8a739a",
-          -- -- string = "#f2e6ff",
-          -- -- number = "#f2e6ff",
-          -- -- string = "#d8d5b1",
-          -- number = "#8f729e",
-          -- -- type = "#dcaed7",
-        },
-      })
-    end,
-  },
-  {
-    "jnurmine/Zenburn",
-  },
   {
     "RRethy/base16-nvim",
+    lazy = false,
+    priority = 0,
+  },
+
+  {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    lazy = false,
+    priority = 0,
+    config = function()
+      vim.cmd([[
+      colorscheme rose-pine-moon
+
+      " Pure black backgrounds for UI
+      highlight Normal guibg=#000000
+      highlight NormalNC guibg=#000000
+      highlight SignColumn guibg=#000000
+      highlight VertSplit guibg=#000000
+      highlight StatusLine guibg=#000000
+      highlight StatusLineNC guibg=#000000
+      highlight TabLine guibg=#000000
+      highlight TabLineFill guibg=#000000
+      highlight TabLineSel guibg=#000000
+
+      " Floating windows and menus
+      highlight Pmenu guibg=#000000
+      highlight PmenuSel guibg=#1a1a1a
+      highlight FloatBorder guibg=#000000
+      highlight NormalFloat guibg=#000000
+      highlight TelescopeNormal guibg=#000000
+      highlight TelescopeBorder guibg=#000000
+      highlight TelescopePromptNormal guibg=#000000
+      highlight TelescopePromptBorder guibg=#000000
+      highlight TelescopeResultsNormal guibg=#000000
+      highlight TelescopeResultsBorder guibg=#000000
+
+      highlight CursorLine guibg=#1a0f23
+      highlight CursorLineNr guifg=#f5c2e7 guibg=#1a0f23
+      highlight Visual guibg=#251530 guifg=NONE
+
+      highlight Search guibg=#3b1f38 guifg=#ffffff
+      highlight IncSearch guibg=#5a2e57 guifg=#ffffff
+      highlight MatchParen guibg=#2a1730 guifg=#f5c2e7
+
+      highlight LspReferenceText guibg=#10071a guifg=NONE
+      highlight LspReferenceRead guibg=#10071a guifg=NONE
+      highlight LspReferenceWrite guibg=#10071a guifg=NONE
+
+      highlight Illuminate guibg=#10071a guifg=NONE
+      highlight IlluminateWord guibg=#10071a guifg=NONE
+      ]])
+    end,
   },
 }
