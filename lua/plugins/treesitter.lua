@@ -19,9 +19,12 @@ return {
           "java",
           "python",
           "typescript",
+          "tsx",
+          "html",
+          "json",
         },
 
-        auto_install = false,
+        auto_install = true,
 
         highlight = {
           enable = true,

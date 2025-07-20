@@ -5,9 +5,11 @@ return {
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     { "j-hui/fidget.nvim", opts = {} },
-    "saghen/blink.cmp",
+    "Saghen/blink.cmp",
   },
   config = function()
+    local util = require("lspconfig.util") -- ✅ Required for tailwindcss root_dir
+
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
       callback = function(event)
@@ -88,18 +90,58 @@ return {
       clangd = {},
       jdtls = {},
       marksman = {},
+
+      tailwindcss = {
+        root_dir = util.root_pattern(
+          "tailwind.config.js",
+          "tailwind.config.cjs",
+          "tailwind.config.ts",
+          "package.json",
+          ".git"
+        ),
+        filetypes = {
+          "html",
+          "css",
+          "scss",
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact",
+        },
+        init_options = {
+          userLanguages = {
+            javascript = "javascript",
+            javascriptreact = "javascriptreact",
+            typescript = "typescript",
+            typescriptreact = "typescriptreact",
+          },
+        },
+        settings = {
+          tailwindCSS = {
+            validate = true,
+            includeLanguages = {
+              javascript = "javascript",
+              javascriptreact = "javascriptreact",
+              typescript = "typescript",
+              typescriptreact = "typescriptreact",
+            },
+          },
+        },
+      },
     }
 
-    local ensure_installed = vim.tbl_keys(servers or {})
-    vim.list_extend(ensure_installed, {
-      "stylua",
-    })
+    local ensure_installed = {}
+    for name, config in pairs(servers) do
+      if config ~= false then
+        table.insert(ensure_installed, name)
+      end
+    end
 
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
     require("mason-lspconfig").setup({
-      ensure_installed = {},
-      automatic_installation = false,
+      ensure_installed = ensure_installed,
+      automatic_installation = true,
       handlers = {
         function(server_name)
           local server = servers[server_name] or {}
