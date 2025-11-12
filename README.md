@@ -1,8 +1,4 @@
-# neovim-config
-This is my neovim config
+# 💤 LazyVim
 
-![dashboard](src/dashboard.png)
-This is my dashboard
-
-![code-theme](src/code.png)
-This is how the code looks
+A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
+Refer to the [documentation](https://lazyvim.github.io/installation) to get started.

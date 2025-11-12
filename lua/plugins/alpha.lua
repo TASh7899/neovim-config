@@ -41,7 +41,9 @@ return {
     dashboard.section.header.opts = {
       position = "center",
       padding = 0,
+      hl = "AlphaHeader",
     }
+    vim.api.nvim_set_hl(0, "AlphaHeader", { fg = "#FFFAA0", bold = true })
     dashboard.config.layout = {
       { type = "padding", val = 2 },
       dashboard.section.header,

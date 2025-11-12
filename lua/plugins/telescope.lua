@@ -67,8 +67,19 @@ return {
       vim.keymap.set("n", "<leader>z", "<cmd>Telescope zoxide list<CR>", { desc = "Zoxide directories" })
       vim.keymap.set("n", "<leader>fv", builtin.help_tags, {})
       vim.keymap.set("n", "<leader>ds", builtin.lsp_document_symbols, {})
-      vim.keymap.set("n", "<leader>di", builtin.diagnostics, {})
       vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+
+      vim.keymap.set("n", "<leader>di", function()
+        require("telescope.builtin").diagnostics({
+          layout_strategy = "vertical",
+          layout_config = {
+            preview_height = 0.6,
+            width = 0.9,
+            height = 0.9,
+          },
+          sorting_strategy = "ascending",
+        })
+      end, { desc = "Diagnostics (vertical split layout)" })
     end,
   },
 }
