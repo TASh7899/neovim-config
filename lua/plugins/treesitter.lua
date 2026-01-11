@@ -31,6 +31,7 @@ return {
           "tsx",
           "html",
           "json",
+          "kotlin",
         },
 
         auto_install = false,

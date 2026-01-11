@@ -8,7 +8,7 @@ return {
     "Saghen/blink.cmp",
   },
   config = function()
-    local util = require("lspconfig.util") 
+    local util = require("lspconfig.util")
 
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
@@ -76,6 +76,7 @@ return {
       yamlls = {},
       prismals = {},
       graphql = {},
+      kotlin_language_server = {},
       dockerls = {},
       lua_ls = {
         settings = {
